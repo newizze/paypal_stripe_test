@@ -16,4 +16,4 @@ Route::get('/', function () {
 });
 
 Route::get('/stripe_list',"StripeSubscriptions@index");
-Route::post('/ipn',"Paypal@index");
+Route::post('/ipn',"Paypal@index")->name('ipn');
