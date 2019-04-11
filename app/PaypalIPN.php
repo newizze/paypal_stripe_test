@@ -7,7 +7,7 @@ class PaypalIPN
     /** @var bool Indicates if the sandbox endpoint is used. */
     private $use_sandbox = false;
     /** @var bool Indicates if the local certificates are used. */
-    private $use_local_certs = true;
+    private $use_local_certs = false;
     /** Production Postback URL */
     const VERIFY_URI = 'https://ipnpb.paypal.com/cgi-bin/webscr';
     /** Sandbox Postback URL */
