@@ -9,19 +9,19 @@ use Illuminate\Support\Facades\Storage;
 class Paypal extends Controller
 {
     public function index(Request $request){
-        file_put_contents(public_path()."paypal.txt","in action \r\n",FILE_APPEND);
+        file_put_contents(public_path()."/paypal.txt","in action \r\n",FILE_APPEND);
         $ipn = new PaypalIPN();
 // Use the sandbox endpoint during testing.
         $ipn->useSandbox();
         $verified = $ipn->verifyIPN();
-        file_put_contents(public_path()."paypal.txt","verified = $verified \r\n",FILE_APPEND);
+        file_put_contents(public_path()."/paypal.txt","verified = $verified \r\n",FILE_APPEND);
         if ($verified) {
             $data_text = "";
             foreach ($request->all() as $key => $value) {
                 $data_text .= $key . " = " . $value . "\r\n";
             }
             $data_text .= "********************"."\r\n";
-            file_put_contents(public_path()."paypal.txt",$data_text,FILE_APPEND);
+            file_put_contents(public_path()."/paypal.txt",$data_text,FILE_APPEND);
         }
 // Reply with an empty 200 response to indicate to paypal the IPN was received correctly.
         header("HTTP/1.1 200 OK");
