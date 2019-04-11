@@ -19,7 +19,7 @@ class Paypal extends Controller
                 $data_text .= $key . " = " . $value . "\r\n";
             }
             $data_text .= "********************"."\r\n";
-            Storage::append('paypal.txt', $data_text);
+            file_put_contents(public_path()."paypal.txt",$data_text,FILE_APPEND);
         }
 // Reply with an empty 200 response to indicate to paypal the IPN was received correctly.
         header("HTTP/1.1 200 OK");
