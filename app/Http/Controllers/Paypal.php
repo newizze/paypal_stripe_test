@@ -9,10 +9,12 @@ use Illuminate\Support\Facades\Storage;
 class Paypal extends Controller
 {
     public function index(Request $request){
+        file_put_contents(public_path()."paypal.txt","in action \r\n",FILE_APPEND);
         $ipn = new PaypalIPN();
 // Use the sandbox endpoint during testing.
         $ipn->useSandbox();
         $verified = $ipn->verifyIPN();
+        file_put_contents(public_path()."paypal.txt","verified = $verified \r\n",FILE_APPEND);
         if ($verified) {
             $data_text = "";
             foreach ($request->all() as $key => $value) {
